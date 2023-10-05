@@ -75,8 +75,8 @@ class TwoLinkRobot:
 		self.PROTOCOL_VERSION            = 2.0               # See which protocol version is used in the Dynamixel
 
 		# ID
-		self.DXL1_ID                      = 1                          
-		self.DXL2_ID                      = 2                             
+		self.DXL1_ID                      = 2                          
+		self.DXL2_ID                      = 3                             
 		self.DXL3_ID                      = 3                            
 		self.DXL4_ID                      = 4
 		self.DXL5_ID                      = 5
