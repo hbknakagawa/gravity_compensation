@@ -21,8 +21,8 @@ twolink  = TwoLinkRobot()
 twolink.SetOperatingMode(1,twolink.CURRENT_BASED_POSITION_CONTROL)
 twolink.SetOperatingMode(2,twolink.CURRENT_BASED_POSITION_CONTROL)
 
-twolink.SetPID(1,1000,0,0) # PID gain for servo position loop control (1,900,0,1000)
-twolink.SetPID(2,1000,0,0)
+twolink.SetPID(2,1000,0,0) # PID gain for servo position loop control (1,900,0,1000)
+twolink.SetPID(3,1000,0,0)
 
 twolink.TorqueOn()
 
@@ -60,32 +60,32 @@ while True:
 
     print("PreAng1",PreAng1)
     print("PreAng2",PreAng2)
-    ReqTor1 = M1*g*l1*math.cos(PreAng1*deg2rad) + M2*g*L1*math.cos(PreAng1*deg2rad) + M2*g*l2*math.cos((PreAng1+PreAng2)*deg2rad)
-    ReqTor2 = M2*g*l2*math.cos((PreAng1+PreAng2)*deg2rad)
+    # ReqTor1 = M1*g*l1*math.cos(PreAng1*deg2rad) + M2*g*L1*math.cos(PreAng1*deg2rad) + M2*g*l2*math.cos((PreAng1+PreAng2)*deg2rad)
+    # ReqTor2 = M2*g*l2*math.cos((PreAng1+PreAng2)*deg2rad)
 
-    print("ReqTor1",ReqTor1)
-    #print("Tau1", Tau1)
-    print("ReqTor2",ReqTor2)
-    #rint("Tau2", Tau1)
-    print("-------------------------------------")
-    #twolink.DriveTorque(ReqTor1,ReqTor2)
+    # print("ReqTor1",ReqTor1)
+    # #print("Tau1", Tau1)
+    # print("ReqTor2",ReqTor2)
+    # #rint("Tau2", Tau1)
+    # print("-------------------------------------")
+    # #twolink.DriveTorque(ReqTor1,ReqTor2)
 
 
-    # Check some difference between last and present position
-    # to not write the flow of command to servo
-    if abs(PreAng1 - LastAng1) > 0.4:
-        #RunPositionTorque(PreAng,ReqTor)
-        twolink.RunPositionTorque(PreAng1,ReqTor1,LastAng2,ReqTor2)
-        print("---------------- Drive 1 ----------------")
-    if abs(PreAng2 - LastAng2) > 0.4:
-        twolink.RunPositionTorque(LastAng1,ReqTor1,PreAng2,ReqTor2)
-        print("---------------- Drive 2 ----------------")
+    # # Check some difference between last and present position
+    # # to not write the flow of command to servo
+    # if abs(PreAng1 - LastAng1) > 0.4:
+    #     #RunPositionTorque(PreAng,ReqTor)
+    #     twolink.RunPositionTorque(PreAng1,ReqTor1,LastAng2,ReqTor2)
+    #     print("---------------- Drive 1 ----------------")
+    # if abs(PreAng2 - LastAng2) > 0.4:
+    #     twolink.RunPositionTorque(LastAng1,ReqTor1,PreAng2,ReqTor2)
+    #     print("---------------- Drive 2 ----------------")
 
     
-    LastAng1 = PreAng1
-    LastAng2 = PreAng2
-    #print("period %.6f" %period)
+    # LastAng1 = PreAng1
+    # LastAng2 = PreAng2
+    # #print("period %.6f" %period)
     
-    delayTime = max(0,T-time.time())
-    #time.sleep(delayTime)     #max is needed in Windows due to
-                            #sleep's behaviour with negative argument
+    # delayTime = max(0,T-time.time())
+    # time.sleep(delayTime)     #max is needed in Windows due to
+    #                         #sleep's behaviour with negative argument

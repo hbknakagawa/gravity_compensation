@@ -83,7 +83,7 @@ class TwoLinkRobot:
 		self.DXL6_ID                      = 6
 		self.DXL7_ID                      = 7
 
-		self.BAUDRATE                    = 57600             # Dynamixel default self.BAUDRATE : 57600
+		self.BAUDRATE                    = 1000000             # Dynamixel default self.BAUDRATE : 57600
 		self.DEVICENAME                  = 'COM3'    # Check which port is being used on your controller
 		                                                	 # ex) Windows: "COM1"   Linux: "/dev/ttyUSB0" Mac: "/dev/tty.usbserial-*"
 		self.TORQUE_ENABLE               = 1                 # Value for enabling the torque
@@ -316,7 +316,7 @@ class TwoLinkRobot:
 		if dxl_comm_result != COMM_SUCCESS:
 			print("%s" % self.packetHandler.getTxRxResult(dxl_comm_result))
 
-		print("COMM_SUCCESS",COMM_SUCCESS)
+		print("COMM_SUCCESS",COMM_SUCCESS,"dxl_comm_result",dxl_comm_result)
 
 		# Check if groupsyncread data of Dynamixel#1 is available
 		dxl_getdata_result = self.groupSyncReadPosition.isAvailable(self.DXL1_ID, self.ADDR_PRO_PRESENT_POSITION, self.LEN_PRO_PRESENT_POSITION)
